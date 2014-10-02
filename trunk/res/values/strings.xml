@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Automatic Call Recorder</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="reciever_end_call">End call</string>
+    <string name="record_impossible">Unfortunately, it is not possible to record calls in this device.</string>
+    <string name="reciever_start_call">Start record call</string>
+    <string name="notification_ticker">Recording is now Starting</string>
+    <string name="notification_title">The phone is now recording the conversation</string>
+    <string name="notification_text">The phone will stop the recording when the conversation will end</string>
+	<string name="rate_app">Rate</string>
+    <!-- Android navication menu here -->
+    <string-array name="titles">
+        <item>Home</item>
+        <item>General setting</item>
+        <item>Sync to Dropbox</item>
+        <item>About</item>
+        <item>Share</item>
+    </string-array>
+
+    <array name="icons">
+        <item>@drawable/menu_home</item>
+        <item>@drawable/menu_setting</item>
+        <item>@drawable/menu_cloud</item>
+        <item>@drawable/menu_about</item>
+        <item>@drawable/menu_social_fb</item>
+    </array>
+
+    <string name="delete">Delete</string>
+    <string name="allcalls">All calls</string>
+    <string name="favorite">Favorites</string>
+    <string name="share">Share</string>
+    <string name="backup">Sync to Dropbox</string>
+
+    <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+    <string name="imgdesc">Image desciption</string>
+    <string name="title_activity_frament_home">FramentHome</string>
+    <string name="synchronizationoptions">Synchronization options</string>
+    <string name="enablemanualsync">Enable manual sync</string>
+    <string name="enableautosync">Enable auto sync</string>
+    <string name="favoritecalls">Favorites calls</string>
+    <string name="btunlink">Unlink</string>
+    <string name="runcleanup">Run  Cleanup</string>
+    <string name="btlink">Link</string>
+    <string name="generalsetting">General</string>
+    <string name="selectcontacts">Contacts</string>
+    <string name="enablecallrecording">Enable Call Recording</string>
+    <string name="audioquality">Audio Quality</string>
+    <string name="low">Low, 8 KHz, 16 Bit, Mono</string>
+    <string name="medium">Moderate, 22 KHz, 16 Bit, Mono</string>
+    <string name="high">High, 44 KHz, 16 Bit, Mono</string>
+    <string name="selecttyperecord">Type records :</string>
+    <string name="contacts">Contacts</string>
+    <string name="unknown">Unknown</string>
+    
+    
+
+    <!-- About us -->
+    <string name="aboutus"><![CDATA[Thanks for using\nwe\'ll always improve our products\nIf you like please rate for us\nThank you!
+        \nhttp://softtech.vn
+        ]]></string>
+        
+    <string name="no_result_yet">Haven\'t got any file record now.</string>
+    
+</resources>
