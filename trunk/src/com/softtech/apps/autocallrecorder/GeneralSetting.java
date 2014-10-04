@@ -110,8 +110,14 @@ public class GeneralSetting extends ListFragment {
 		adView = (AdView) rootView.findViewById(R.id.adView);
 		if(hasConnections()){
 			// Look up the AdView as a resource and load a request
-			    AdRequest adRequest = new AdRequest.Builder().build();
-			    adView.loadAd(adRequest);
+			Handler handler = new Handler();
+			handler.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					AdRequest adRequest = new AdRequest.Builder().build();
+				    adView.loadAd(adRequest);
+				}
+			}, 10000); // Time > 10s.  
 		}
 		mViewFlipper = (ViewFlipper) rootView.findViewById(R.id.view_flipper);
 

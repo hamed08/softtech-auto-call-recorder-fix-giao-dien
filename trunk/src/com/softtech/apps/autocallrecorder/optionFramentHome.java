@@ -120,11 +120,11 @@ public class optionFramentHome extends Fragment {
 
 		lvFavorites = (ListView) rootView.findViewById(R.id.lv_favorites);
 		adView = (AdView) rootView.findViewById(R.id.adView);
-		if(hasConnections()){
-			// Look up the AdView as a resource and load a request
-			    AdRequest adRequest = new AdRequest.Builder().build();
-			    adView.loadAd(adRequest);
-		}
+//		if(hasConnections()){
+//			// Look up the AdView as a resource and load a request
+//			    AdRequest adRequest = new AdRequest.Builder().build();
+//			    adView.loadAd(adRequest);
+//		}
 		if (positionTab == 0) {
 
 			btAllCalls
@@ -735,9 +735,10 @@ public class optionFramentHome extends Fragment {
 			
 			Bundle b = msg.getData();
 			String dieukien = b.getString("text");
-			//Log.d("FRAGMENT", "Da nhan duoc chuoi =" + dieukien);
-			voiceAdapter.getFilter().filter(dieukien);	
-			
+			Log.d("FRAGMENT", "Da nhan duoc chuoi =" + dieukien);
+			if(dieukien != null && dieukien .length() > 0){
+				voiceAdapter.getFilter().filter(dieukien);	
+			}
 		}
 	};
 

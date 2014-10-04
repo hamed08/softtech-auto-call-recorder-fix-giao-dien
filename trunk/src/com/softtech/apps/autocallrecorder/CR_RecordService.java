@@ -37,7 +37,7 @@ public class CR_RecordService extends Service {
 	public static final int STATE_INCOMING_NUMBER = 0;
 	public static final int STATE_CALL_START = 1;
 	public static final int STATE_CALL_END = 2;
-	public static int AUDIO_MODE = AudioManager.MODE_NORMAL;
+	//public static int AUDIO_MODE = AudioManager.MODE_NORMAL;
 
 	private NotificationManager manger;
 
@@ -52,7 +52,7 @@ public class CR_RecordService extends Service {
 	String tag = "AUTO_ANSWER_PHONE_CALL";
 
 	AudioManager am; // Audio manager
-
+	//int old_mode;
 	public CR_RecordService() {
 		// TODO Auto-generated constructor stub
 		Log.d(tag, "Da start service");
@@ -136,7 +136,8 @@ public class CR_RecordService extends Service {
 			myFileName = getFilename();
 			recorder.setOutputFile(myFileName);
 			am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-			AUDIO_MODE = am.getMode(); // old mode to restore
+			//AUDIO_MODE = am.getMode(); // old mode to restore
+			//old_mode = am.getMode();
 			//am.setMode(AudioManager.MODE_IN_CALL);
 			int volume_level = am.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
 			int max_volume = am.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL);
@@ -213,7 +214,7 @@ public class CR_RecordService extends Service {
 			recorder.reset();
 			recorder.release();
 			recorder = null;
-			//am.setMode(AUDIO_MODE);
+			//am.setMode(old_mode);
 			is_offhook = false;
 		}
 		// System.gc();
