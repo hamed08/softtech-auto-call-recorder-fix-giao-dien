@@ -6,4 +6,5 @@
     <color name="bg_sync">#263349</color>
     <color name="bg_sync_parent">#212634</color>
     <color name="bg_menu_divider">#1a2135</color>
+    <color name="bg">#19253a</color>
 </resources>

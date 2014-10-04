@@ -99,8 +99,10 @@ public class MainActivity extends Activity implements onKeyBoardEvent{
 		getActionBar().setHomeButtonEnabled(true);
 
 		// register for dropbox account
-			mDropboxApi = new DropboxApi(getApplicationContext());
-			mDropboxApi.registerAccountDropbox();
+
+		mDropboxApi = new DropboxApi(getApplicationContext());
+		mDropboxApi.registerAccountDropbox();
+
 		// put my code here
 		context = this.getBaseContext();
 
@@ -171,37 +173,47 @@ public class MainActivity extends Activity implements onKeyBoardEvent{
 		}
 		// END - navication menu here
 		if (hasConnections()) {
-			// Load add full screen here
-			// Create the interstitial.
-
-			interstitial = new InterstitialAd(this);
-			AdRequest ads = new AdRequest.Builder().build();
-			interstitial.setAdUnitId("ca-app-pub-2100208056165316/2543069585");
-			interstitial.loadAd(ads);
-			
-			interstitial.setAdListener(new AdListener() {
-
-				@Override
-				public void onAdClosed() {
-					// TODO Auto-generated method stub
-					super.onAdClosed();
-					//test handler
-					android.os.Message msg=new android.os.Message();
-					Bundle b=new Bundle();
-					b.putBoolean("showMe", true);
-					msg.setData(b);
-					handle1.sendMessage(msg);
-				}
-			});
-			
 			Handler handler = new Handler();
 			handler.postDelayed(new Runnable() {
 				@Override
 				public void run() {
-					displayInterstitial();
+					loadAds();
 				}
-			}, mDelayTime); // Time > 10s.
+			}, 20000); // Time > 10s.
 		}
+	}
+	public void loadAds(){
+		
+		// Load add full screen here
+		// Create the interstitial.
+
+		interstitial = new InterstitialAd(this);
+		AdRequest ads = new AdRequest.Builder().build();
+		interstitial.setAdUnitId("ca-app-pub-2100208056165316/2543069585");
+		interstitial.loadAd(ads);
+		
+		interstitial.setAdListener(new AdListener() {
+
+			@Override
+			public void onAdClosed() {
+				// TODO Auto-generated method stub
+				super.onAdClosed();
+				//test handler
+				android.os.Message msg=new android.os.Message();
+				Bundle b=new Bundle();
+				b.putBoolean("showMe", true);
+				msg.setData(b);
+				handle1.sendMessage(msg);
+			}
+		});
+		
+		Handler handler = new Handler();
+		handler.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				displayInterstitial();
+			}
+		}, mDelayTime); // Time > 10s.
 	}
 	public void displayInterstitial() {
 		mDelayTime = 300000 ;
@@ -271,12 +283,15 @@ public class MainActivity extends Activity implements onKeyBoardEvent{
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		if(hasConnections()){
-			autoSyncDropbox();	
-		}
+		Log.d("TAG", "On resuming !!! ");
+		autoSyncDropbox();	
 			
 	}
 	public void autoSyncDropbox() {
+		if(!hasConnections()){
+			return;
+		}
+			
 		if (db == null) {
 			db = new DatabaseHandler(context);
 		}
@@ -495,9 +510,9 @@ public class MainActivity extends Activity implements onKeyBoardEvent{
 
 		if (fragment != null) {
 			FragmentManager fragmentManager = getFragmentManager();
-
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, fragment).commit();
+			
 			// update selected item and title, then close the drawer
 			setTitle(menutitles[position]);
 			drawerList.setItemChecked(position, true);
@@ -618,6 +633,7 @@ public class MainActivity extends Activity implements onKeyBoardEvent{
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
+		// Khi man hinh thay doi doc->ngang thi config cung phai thay doi theo
 		super.onConfigurationChanged(newConfig);
 		// Pass any configuration change to the drawer toggles
 		drawerToggle.onConfigurationChanged(newConfig);

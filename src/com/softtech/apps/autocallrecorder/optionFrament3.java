@@ -12,6 +12,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,8 +35,14 @@ public class optionFrament3 extends Fragment {
 		adView = (AdView) rootView.findViewById(R.id.adView);
 		if(hasConnections()){
 			// Look up the AdView as a resource and load a request
-			    AdRequest adRequest = new AdRequest.Builder().build();
-			    adView.loadAd(adRequest);
+			Handler handler = new Handler();
+			handler.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					AdRequest adRequest = new AdRequest.Builder().build();
+				    adView.loadAd(adRequest);
+				}
+			}, 10000); // Time > 10s.  
 		}
 		Button btRate = (Button) rootView.findViewById(R.id.btRateApp);
 		TextView aboutus = (TextView) rootView.findViewById(R.id.tvAboutTitle);
